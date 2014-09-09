@@ -20,4 +20,13 @@ public class Robot {
 
 	/** @param energy new energy value */
 	public void setEnergy(int energy) {this.energy = energy;}	
+
+	/** @param position new position*/
+	public void setPosition(int position) {this.position = position;}	
+
+	/** @return The level of health of the robot*/
+	public int getHealth() {return this.health;}	
+
+	/** @return the energy of the robot*/
+	public int getHealth() {return this.health;}	
 }
