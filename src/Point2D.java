@@ -58,4 +58,8 @@ public class Point2D {
 	public boolean isEqualTo(Point2D point) {
 		return (this.x == point.x && this.y == point.y);
 	}
+
+  public Point2D plus(Point2D p) {
+    return new Point2D(this.getY() + p.getX(), this.getY() + p.getY());
+  }
 }
