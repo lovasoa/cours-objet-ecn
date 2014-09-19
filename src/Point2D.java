@@ -59,7 +59,20 @@ public class Point2D {
 		return (this.x == point.x && this.y == point.y);
 	}
 
+  /** Retourne un point dont les coordonnées sont la somme des coordonnées
+   * actuelles et des coordonnées fournies
+   */
   public Point2D plus(Point2D p) {
-    return new Point2D(this.getY() + p.getX(), this.getY() + p.getY());
+    Point2D np = new Point2D(this);
+    np.move(p);
+    return np;
+  }
+
+  /** Déplace le point:
+   * Ajoute les coordonnées de p aux cordonnées du point
+   */
+  public void move(Point2D p) {
+    this.setX(this.getX() + p.getX());
+    this.setY(this.getY() + p.getY());
   }
 }
