@@ -12,9 +12,12 @@ public class Robot {
 	private Point2D position;
 	private int energy = ROBOT_DEFAUT_ENERGIE;
 	private int health = ROBOT_DEFAUT_SANTE;
+  private int cout_deplacement = 1;
+  private static int nbre_instances = 0;
 
 	/** Crée un robot */
 	public Robot(String name) {
+    this.nbre_instances ++;
 		this.name = name;
 		this.position = new Point2D(0,0);
 	}
@@ -45,9 +48,10 @@ public class Robot {
 	/** @return the position of the robot*/
 	public Point2D getPosition() {return this.position;}	
 
-  /** Déplace le robot */
+  /** Déplace le robot et lui fait perdre de l'énergie*/
 	public boolean move(Point2D vect) {
 		this.getPosition().move(vect);
+    this.depenserEnergie(this.cout_deplacement);
 		return true;
 	}
 
