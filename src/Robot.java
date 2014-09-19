@@ -7,6 +7,8 @@ public class Robot {
 	private int energy;
 	private int health;
 
+  public static int RECHARGE = 1;
+
 	/** Crée un robot */
 	public Robot(String name) {
 		this.name = name;
@@ -19,7 +21,10 @@ public class Robot {
 	public void setHealth(int health) {this.health = health;}	
 
 	/** @param energy new energy value */
-	public void setEnergy(int energy) {this.energy = energy;}	
+	public boolean setEnergy(int energy) {
+    this.energy = energy;
+    return true;
+  }	
 
 	/** @param position new position*/
 	public void setPosition(Point2D position) {this.position = position;}	
@@ -33,8 +38,22 @@ public class Robot {
 	/** @return the position of the robot*/
 	public Point2D getPosition() {return this.position;}	
 
+  /** Déplace le robot */
 	public boolean move(Point2D vect) {
 		this.getPosition().move(vect);
 		return true;
 	}
+
+  /** Redonne de l'énergie au robot
+   * @return true si le robot a bien été rechargé*/
+  public boolean recharger() {
+    return this.recharger(Robot.RECHARGE);
+  }
+
+  /** Redonne de l'énergie au robot
+   * @param energy L'énergie à ajouter au robot
+   * @return true si le robot a bien été rechargé*/
+  public boolean recharger(int energy) {
+    return this.setEnergy(this.getEnergy() + energy);
+  }
 }
