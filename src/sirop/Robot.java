@@ -1,5 +1,8 @@
+package sirop;
+
 /**
  * Représente un robot
+ * @author lovasoa
  */
 public class Robot {
 
@@ -72,4 +75,17 @@ public class Robot {
   public boolean depenserEnergie(int energy) {
     return this.setEnergy(this.getEnergy() - energy);
   }
+        
+  /** @return the type of the robot*/
+  public String getType(){return"RobotSimple";}
+
+  /** @print the information of the robot*/
+  public void afficherRobot(){
+      
+      System.out.println("Je m'appelle "+ name + ", je suis un robot de type " + this.getType() + 
+      ", je possede "+ energy +" points d'energie, "+health+ 
+      " points de vie et je me trouve en position ["+position.getX()+","+position.getY()+"].");
+      
+  }
 }
+
