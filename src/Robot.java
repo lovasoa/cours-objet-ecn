@@ -3,10 +3,10 @@
  */
 public class Robot {
 
-  public static int ROBOT_MAX_ENERGIE = 150;
-  public static int ROBOT_MAX_SANTE = 200;
-  public static int ROBOT_DEFAUT_ENERGIE = 100;
-  public static int ROBOT_DEFAUT_SANTE = 100;
+  public static final int ROBOT_MAX_ENERGIE = 150;
+  public static final int ROBOT_MAX_SANTE = 200;
+  public static final int ROBOT_DEFAUT_ENERGIE = 100;
+  public static final int ROBOT_DEFAUT_SANTE = 100;
 
 	private String name;
 	private Point2D position;
