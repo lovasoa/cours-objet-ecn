@@ -18,7 +18,10 @@ public class Robot {
 	}
 
 	/** @param health new health value */
-	public void setHealth(int health) {this.health = health;}	
+	public boolean setHealth(int health) {
+    this.health = health;
+    return true;
+  }
 
 	/** @param energy new energy value */
 	public boolean setEnergy(int energy) {
@@ -55,5 +58,10 @@ public class Robot {
    * @return true si le robot a bien été rechargé*/
   public boolean recharger(int energy) {
     return this.setEnergy(this.getEnergy() + energy);
+  }
+
+  /** Redonne de la vie au robot */
+  public boolean reparer(int health) {
+    return this.setHealth(this.getHealth() + health);
   }
 }
