@@ -10,25 +10,25 @@ public class Robot {
 
 	private String name;
 	private Point2D position;
-	private int energy;
-	private int health;
+	private int energy = ROBOT_DEFAUT_ENERGIE;
+	private int health = ROBOT_DEFAUT_SANTE;
 
 	/** Crée un robot */
 	public Robot(String name) {
 		this.name = name;
 		this.position = new Point2D(0,0);
-		this.energy = 100;
-		this.health = 100;
 	}
 
 	/** @param health new health value */
 	public boolean setHealth(int health) {
+    if (health > ROBOT_MAX_ENERGIE) {return false;}
     this.health = health;
     return true;
   }
 
 	/** @param energy new energy value */
 	public boolean setEnergy(int energy) {
+    if (energy > ROBOT_MAX_ENERGIE) {return false;}
     this.energy = energy;
     return true;
   }	
