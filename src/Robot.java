@@ -32,4 +32,9 @@ public class Robot {
 
 	/** @return the position of the robot*/
 	public Point2D getPosition() {return this.position;}	
+
+	public boolean move(Point2D vect) {
+		this.getPosition().move(vect);
+		return true;
+	}
 }
