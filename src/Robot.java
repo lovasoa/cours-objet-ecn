@@ -64,4 +64,10 @@ public class Robot {
   public boolean reparer(int health) {
     return this.setHealth(this.getHealth() + health);
   }
+
+  /** Dépense de l'énergie du robot 
+   * @return true si l'énergie a pu être dépensée*/
+  public boolean depenserEnergie(int energy) {
+    return this.setEnergy(this.getEnergy() - energy);
+  }
 }
