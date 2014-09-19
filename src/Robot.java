@@ -2,12 +2,16 @@
  * Représente un robot
  */
 public class Robot {
+
+  public static int ROBOT_MAX_ENERGIE = 150;
+  public static int ROBOT_MAX_SANTE = 200;
+  public static int ROBOT_DEFAUT_ENERGIE = 100;
+  public static int ROBOT_DEFAUT_SANTE = 100;
+
 	private String name;
 	private Point2D position;
 	private int energy;
 	private int health;
-
-  public static int RECHARGE = 1;
 
 	/** Crée un robot */
 	public Robot(String name) {
@@ -46,12 +50,6 @@ public class Robot {
 		this.getPosition().move(vect);
 		return true;
 	}
-
-  /** Redonne de l'énergie au robot
-   * @return true si le robot a bien été rechargé*/
-  public boolean recharger() {
-    return this.recharger(Robot.RECHARGE);
-  }
 
   /** Redonne de l'énergie au robot
    * @param energy L'énergie à ajouter au robot
