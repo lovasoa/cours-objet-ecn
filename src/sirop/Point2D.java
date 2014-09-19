@@ -57,5 +57,10 @@ public class Point2D {
 
 	public boolean isEqualTo(Point2D point) {
 		return (this.x == point.x && this.y == point.y);
+        
+        
+                
+                
+                
 	}
 }
