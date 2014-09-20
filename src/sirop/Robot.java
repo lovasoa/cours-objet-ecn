@@ -40,7 +40,8 @@ public class Robot {
   }	
 
 	/** @param position new position*/
-	public void setPosition(Point2D position) {this.position = position;}	
+	public void setPosition(Point2D position) {
+            this.position = position;}	
 
 	/** @return The level of health of the robot*/
 	public int getHealth() {return this.health;}	
