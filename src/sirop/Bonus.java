@@ -10,14 +10,18 @@ package sirop;
  **/
 
 public abstract class Bonus extends Obstacle {
-  private int pointsSante = 100;
+  private int pointsSante = 0;
   private int gainSante = 0;
 
-  private int pointsEnergie = 100;
+  private int pointsEnergie = 0;
   private int gainEnergie = 0;
 
-  public Bonus(Point2D pos) {
+  public Bonus(Point2D pos, int pointsSante, int pointsEnergie) {
     super(pos);
+    this.pointsEnergie = pointsEnergie;
+    this.gainEnergie = pointsEnergie / 10;
+    this.pointsSante = pointsSante;
+    this.gainSante = pointsSante / 10;
   }
 
   private boolean appliquerBonusSante(Robot robot) {

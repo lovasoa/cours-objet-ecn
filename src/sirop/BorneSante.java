@@ -7,10 +7,10 @@ package sirop;
  * Une borne d'énergie qui possède une quatité limitée d'énergie
  * et peut l'utiliser pour recharger des robots
  */
-public class BorneEnergie extends Bonus {
-  private final static int BORNE_MAX_ENERGIE = 100;
+public class BorneSante extends Bonus {
+  private final static int BORNE_MAX_SANTE = 100;
 
-  public BorneEnergie(Point2D pos) {
-    super(pos, 0, BORNE_MAX_ENERGIE);
+  public BorneSante(Point2D pos) {
+    super(pos, BORNE_MAX_SANTE, 0);
   }
 }
