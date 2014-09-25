@@ -17,4 +17,8 @@ public abstract class Bonus extends Obstacle {
     super(pos);
   }
 
+  public boolean appliquerBonus(Robot robot) {
+    return robot.recharger(this.gainEnergie) && robot.reparer(this.gainSante);
+  }
+
 }
