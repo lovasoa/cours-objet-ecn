@@ -16,7 +16,7 @@ public class Obstacle {
             this.PositionObs=PositionObs;
         }
         public void AffichageObs(){
-            System.out.println("La position du obstacle est ["+PositionObs.getX()
+            System.out.println("La position de l'obstacle est ["+PositionObs.getX()
             +","+PositionObs.getY()+"].");
         }
         
