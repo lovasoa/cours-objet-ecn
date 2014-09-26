@@ -25,7 +25,8 @@ public class PlateauJeu {
     bonuses = new ArrayList<>(0);
   }
   
-  public void ajouterRobot(Robot robot) {
+  public void ajouterRobotNeuneu(String nom) {
+    Robot robot = new RobotNeuneu(nom, this);
     robots.add(robot);
   }
   

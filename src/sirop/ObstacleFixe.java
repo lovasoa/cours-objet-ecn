@@ -11,8 +11,8 @@ package sirop;
  */
 public class ObstacleFixe extends Obstacle {
         /**Create a fixed obstacle*/
-        public ObstacleFixe(Point2D PositionFixe){
-                super(PositionFixe);
+        public ObstacleFixe(Point2D PositionFixe, PlateauJeu plateau){
+                super(PositionFixe, plateau);
         }
         
         /**@return the type of the obstacle*/

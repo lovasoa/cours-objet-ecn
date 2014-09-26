@@ -11,8 +11,8 @@ package sirop;
  */
 public class ObstacleMobile extends Obstacle {
     /**Create a mobile obstacle*/
-    public ObstacleMobile(Point2D PositionMobile){
-        super(PositionMobile);
+    public ObstacleMobile(Point2D PositionMobile, PlateauJeu plateau){
+        super(PositionMobile, plateau);
     }
     
     /**@return the type of the obstacle*/

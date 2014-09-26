@@ -17,12 +17,15 @@ public class Robot {
 	private int health = ROBOT_DEFAUT_SANTE;
   private int cout_deplacement = 1;
   private static int nbre_instances = 0;
+  private PlateauJeu plateau;
+ 
 
 	/** Crée un robot */
-	public Robot(String name) {
+	public Robot(String name, PlateauJeu plateau) {
     this.nbre_instances ++;
 		this.name = name;
 		this.position = new Point2D(0,0);
+    this.plateau=plateau;
 	}
 
 	/** @param health new health value */

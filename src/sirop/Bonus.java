@@ -15,9 +15,9 @@ public abstract class Bonus extends Obstacle {
 
   private int pointsEnergie = 0;
   private int gainEnergie = 0;
-
-  public Bonus(Point2D pos, int pointsSante, int pointsEnergie) {
-    super(pos);
+  
+  public Bonus(Point2D pos, int pointsSante, int pointsEnergie, PlateauJeu plateau) {
+    super(pos, plateau);
     this.pointsEnergie = pointsEnergie;
     this.gainEnergie = pointsEnergie / 10;
     this.pointsSante = pointsSante;

@@ -12,9 +12,12 @@ package sirop;
 public class Obstacle {
         
         private Point2D positionObs;
+        private PlateauJeu plateau;
+        
         /**Create a obstacle*/
-        public Obstacle(Point2D PositionObs){
+        public Obstacle(Point2D PositionObs, PlateauJeu plateau){
             this.positionObs=PositionObs;
+            this.plateau = plateau;
         }
         /**@print the position*/
         public void AffichageObs(){
