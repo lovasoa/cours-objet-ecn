@@ -49,8 +49,8 @@ public abstract class Bonus extends Obstacle {
     return "Bonus sans type";}
   
   public String toString(){
-    String res="C'est un "+this.getType()+"\nLa position de le bonus est ["+PositionObs.getX()
-            +","+PositionObs.getY()+"]."+"\nLe bonus du pointEnergie est"+this.gainEnergie
+    String res="C'est un "+this.getType()+"\nLa position de le bonus est ["+this.getPosition().getX()
+            +","+this.getPosition().getY()+"]."+"\nLe bonus du pointEnergie est"+this.gainEnergie
             +"\nLe bonus du pointSante est"+this.gainSante;
             return res;}
 
