@@ -10,10 +10,14 @@ package sirop;
  * @author zhaoshuli
  */
 public class ObstacleFixe extends Obstacle {
-        
+        /**Create a fixed obstacle*/
         public ObstacleFixe(Point2D PositionFixe){
                 super(PositionFixe);
         }
-                
-    
+        
+        /**@return the type of the obstacle*/
+        public String getType (){
+            return "ObstacleFixe.";}
+        
+        
 }

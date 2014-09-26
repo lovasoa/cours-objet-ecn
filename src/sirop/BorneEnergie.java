@@ -13,4 +13,6 @@ public class BorneEnergie extends Bonus {
   public BorneEnergie(Point2D pos) {
     super(pos, 0, BORNE_MAX_ENERGIE);
   }
+  public String getType(){
+    return"BorneEnergie";}
 }

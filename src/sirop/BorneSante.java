@@ -13,4 +13,6 @@ public class BorneSante extends Bonus {
   public BorneSante(Point2D pos) {
     super(pos, BORNE_MAX_SANTE, 0);
   }
+  public String getType(){
+    return"BorneSante";}
 }

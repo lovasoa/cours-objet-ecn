@@ -79,14 +79,21 @@ public class Robot {
         
   /** @return the type of the robot*/
   public String getType(){return"RobotSimple";}
+  
+   /** @return the information of the robot*/
+  public String toString(){
+    String res="Je m'appelle "+ name + ", je suis un robot de type " + this.getType() + 
+      ", je possede "+ energy +" points d'energie, "+health+ 
+      " points de vie et je me trouve en position ["+position.getX()+","+position.getY()+"].";
+    return res;}
 
   /** @print the information of the robot*/
   public void afficherRobot(){
       
-      System.out.println("Je m'appelle "+ name + ", je suis un robot de type " + this.getType() + 
-      ", je possede "+ energy +" points d'energie, "+health+ 
-      " points de vie et je me trouve en position ["+position.getX()+","+position.getY()+"].");
-      
-  }
+      System.out.println(this.toString());   
+  
+    }
+ 
+  
 }
 
