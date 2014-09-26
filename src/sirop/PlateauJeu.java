@@ -12,14 +12,15 @@ import java.util.Scanner;
  * Décrit un plateau de jeu
  */
 public class PlateauJeu {
-  private int[] dimensions = {100,100}; 
+  private int largeur = 100;
+  private int hauteur = 100;
   private ArrayList<Robot> robots;
   private ArrayList<Obstacle> obstacles;
   private ArrayList<Bonus> bonuses;
 
   public PlateauJeu(int largeur, int hauteur) {
-    this.dimensions[0] = largeur;
-    this.dimensions[1] = hauteur;
+    this.largeur = largeur;
+    this.hauteur = hauteur;
     robots = new ArrayList<>(0);
     obstacles = new ArrayList<>(0);
     bonuses = new ArrayList<>(0);
@@ -55,5 +56,25 @@ public class PlateauJeu {
       System.out.println("Voulez-vous continuer? (oui/non) ");
       continuer = scanner.nextLine().trim().equalsIgnoreCase("oui");
     }
+  }
+  public boolean horsPlateau(Point2D point){
+    return point.getX()>this.largeur || point.getY()>this.hauteur;
+  }
+  
+  public boolean caseLibre(Point2D point) {
+    for (Robot robot : this.robots) {
+        if (robot.getPosition().equals(point)) return false;
+    }
+    for (Obstacle obstacle : this.obstacles) {
+      if (obstacle.getPosition().equals(point)) {
+        return false;
+      }
+    }
+    for (Bonus bonus : this.bonuses) {
+      if (bonus.getPosition().equals(point)) {
+        return false;
+      }
+    }
+    return true;
   }
 }
