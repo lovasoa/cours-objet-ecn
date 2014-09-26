@@ -45,5 +45,13 @@ public abstract class Bonus extends Obstacle {
   public boolean appliquerBonus(Robot robot) {
     return this.appliquerBonusEnergie(robot) && this.appliquerBonusEnergie(robot);
   }
+  public String getType(){
+    return "Bonus sans type";}
+  
+  public String toString(){
+    String res="C'est un "+this.getType()+"\nLa position de le bonus est ["+PositionObs.getX()
+            +","+PositionObs.getY()+"]."+"\nLe bonus du pointEnergie est"+this.gainEnergie
+            +"\nLe bonus du pointSante est"+this.gainSante;
+            return res;}
 
 }
