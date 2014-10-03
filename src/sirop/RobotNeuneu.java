@@ -7,8 +7,8 @@ package sirop;
  */
 public class RobotNeuneu extends Robot{
     
-        public RobotNeuneu(String name, PlateauJeu plateau){
-            super(name,plateau);
+        public RobotNeuneu(String name, PlateauJeu plateau, Point2D pos){
+            super(name,plateau,pos);
         }
         
         public String getType(){return "RobotNeuneu";}

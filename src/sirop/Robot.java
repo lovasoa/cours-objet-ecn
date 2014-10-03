@@ -4,7 +4,7 @@ package sirop;
  * Représente un robot
  * @author lovasoa
  */
-public class Robot implements Movable{
+public class Robot extends ElementJeu implements Movable{
 
   public static final int ROBOT_MAX_ENERGIE = 150;
   public static final int ROBOT_MAX_SANTE = 200;
@@ -12,7 +12,6 @@ public class Robot implements Movable{
   public static final int ROBOT_DEFAUT_SANTE = 100;
 
 	private String name;
-	private Point2D position;
 	private int energy = ROBOT_DEFAUT_ENERGIE;
 	private int health = ROBOT_DEFAUT_SANTE;
   private int cout_deplacement = 1;
@@ -21,10 +20,11 @@ public class Robot implements Movable{
  
 
 	/** Crée un robot */
-	public Robot(String name, PlateauJeu plateau) {
+	public Robot(String name, PlateauJeu plateau, Point2D position) {
+    super(position, plateau);
+
     this.nbre_instances ++;
 		this.name = name;
-		this.position = new Point2D(0,0);
     this.plateau=plateau;
 	}
 
@@ -40,20 +40,13 @@ public class Robot implements Movable{
     if (energy > ROBOT_MAX_ENERGIE) {return false;}
     this.energy = energy;
     return true;
-  }	
-
-	/** @param position new position*/
-	public void setPosition(Point2D position) {
-            this.position = position;}	
+  }
 
 	/** @return The level of health of the robot*/
 	public int getHealth() {return this.health;}	
 
 	/** @return the energy of the robot*/
-	public int getEnergy() {return this.energy;}	
-
-	/** @return the position of the robot*/
-	public Point2D getPosition() {return this.position;}	
+	public int getEnergy() {return this.energy;}
 
 	
   /** Redonne de l'énergie au robot
@@ -82,7 +75,7 @@ public class Robot implements Movable{
   public String toString(){
     String res="Je m'appelle "+ name + ", je suis un robot de type " + this.getType() + 
       ", je possede "+ energy +" points d'energie, "+health+ 
-      " points de vie et je me trouve en position ["+position.getX()+","+position.getY()+"].";
+      " points de vie et je me trouve en position ["+this.getPosition().getX()+","+this.getPosition().getY()+"].";
     return res;}
 
   /** @print the information of the robot*/

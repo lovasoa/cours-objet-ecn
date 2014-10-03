@@ -16,7 +16,7 @@ public class SIROP {
         // Création du plateau
         PlateauJeu plateau = new PlateauJeu(10,10);
         // Ajout d'éléments sur le plateau
-        plateau.ajouterRobotNeuneu("Patrick Jaifaim");
+        plateau.ajouterRobotNeuneu("Patrick Jaifaim", new Point2D(0,0));
         
         plateau.tourDeJeu();
     }

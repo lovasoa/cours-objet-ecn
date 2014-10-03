@@ -27,8 +27,8 @@ public class PlateauJeu {
     bonuses = new ArrayList<>(0);
   }
   
-  public void ajouterRobotNeuneu(String nom) {
-    Robot robot = new RobotNeuneu(nom, this);
+  public void ajouterRobotNeuneu(String nom, Point2D pos) {
+    Robot robot = new RobotNeuneu(nom, this, pos);
     robots.add(robot);
   }
   
@@ -62,7 +62,15 @@ public class PlateauJeu {
     return point.getX()>this.largeur || point.getY()>this.hauteur;
   }
   
+  /**
+   * Permet de savoir si une case est libre ou pas
+   * @param point Une case
+   * @return true si la case est dans le plateau et qu'il n'y a rien dessus
+   */
   public boolean caseLibre(Point2D point) {
+    if (this.horsPlateau(point)) {
+      return false;
+    }
     for (Robot robot : this.robots) {
         if (robot.getPosition().equals(point)) return false;
     }
