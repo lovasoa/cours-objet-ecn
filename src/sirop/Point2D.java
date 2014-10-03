@@ -71,14 +71,15 @@ public class Point2D {
    */
   public Point2D plus(Point2D p) {
     Point2D np = new Point2D(this);
-    np.move(p);
+    np.deplacer(p);
     return np;
   }
 
   /** Déplace le point:
    * Ajoute les coordonnées de p aux cordonnées du point
+   * @param p Le vecteur de déplacement
    */
-  public void move(Point2D p) {
+  public void deplacer(Point2D p) {
     this.setX(this.getX() + p.getX());
     this.setY(this.getY() + p.getY());
   }

@@ -56,8 +56,8 @@ public class Robot {
 	public Point2D getPosition() {return this.position;}	
 
   /** Déplace le robot et lui fait perdre de l'énergie*/
-	public boolean move(Point2D vect) {
-		this.getPosition().move(vect);
+	public boolean deplacer(Point2D vect) {
+		this.getPosition().deplacer(vect);
     this.depenserEnergie(this.cout_deplacement);
 		return true;
 	}
