@@ -11,3 +11,6 @@ hs_err_pid*
 # Documentation
 doc/*
 /dist/
+
+#Netbeans files
+nbproject/private/private.xml
