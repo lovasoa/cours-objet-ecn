@@ -94,10 +94,19 @@ public class Robot implements Movable{
 
     /** Déplace le robot et lui fait perdre de l'énergie*/
   @Override
+    public boolean deplacementAutorise(Point2D vect){
+        return (vect.getX() <= 1 && 
+                vect.getX() >= -1 &&
+                vect.getY() <= 1 &&
+                vect.getY() >= -1);
+    }
     public boolean deplacer(Point2D vect) {
+      if(deplacementAutorise(vect)){
         this.getPosition().deplacer(vect);
         this.depenserEnergie(this.cout_deplacement);
 		return true;
+      }
+      else return false;
         //To change body of generated methods, choose Tools | Templates.
     }
 
