@@ -4,7 +4,7 @@ package sirop;
  * Représente un robot
  * @author lovasoa
  */
-public class Robot {
+public class Robot implements Movable{
 
   public static final int ROBOT_MAX_ENERGIE = 150;
   public static final int ROBOT_MAX_SANTE = 200;
@@ -55,13 +55,7 @@ public class Robot {
 	/** @return the position of the robot*/
 	public Point2D getPosition() {return this.position;}	
 
-  /** Déplace le robot et lui fait perdre de l'énergie*/
-	public boolean deplacer(Point2D vect) {
-		this.getPosition().deplacer(vect);
-    this.depenserEnergie(this.cout_deplacement);
-		return true;
-	}
-
+	
   /** Redonne de l'énergie au robot
    * @param energy L'énergie à ajouter au robot
    * @return true si le robot a bien été rechargé*/
@@ -70,6 +64,7 @@ public class Robot {
   }
 
   /** Redonne de la vie au robot */
+
   public boolean reparer(int health) {
     return this.setHealth(this.getHealth() + health);
   }
@@ -96,7 +91,20 @@ public class Robot {
       System.out.println(this.toString());   
   
     }
- 
+
+    /** Déplace le robot et lui fait perdre de l'énergie*/
+  @Override
+    public boolean deplacer(Point2D vect) {
+        this.getPosition().deplacer(vect);
+        this.depenserEnergie(this.cout_deplacement);
+		return true;
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+   
+
+   
   
 }
 

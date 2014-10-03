@@ -9,7 +9,7 @@ package sirop;
  *
  * @author zhaoshuli
  */
-public class Obstacle {
+public class Obstacle{
         
         private Point2D positionObs;
         private PlateauJeu plateau;

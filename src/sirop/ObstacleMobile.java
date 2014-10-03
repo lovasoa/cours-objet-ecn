@@ -9,7 +9,7 @@ package sirop;
  *
  * @author zhaoshuli
  */
-public class ObstacleMobile extends Obstacle {
+public class ObstacleMobile extends Obstacle implements Movable{
     /**Create a mobile obstacle*/
     public ObstacleMobile(Point2D PositionMobile, PlateauJeu plateau){
         super(PositionMobile, plateau);
@@ -18,6 +18,11 @@ public class ObstacleMobile extends Obstacle {
     /**@return the type of the obstacle*/
         public String getType (){
             return "ObstaclMobile.";}
+        
+        public boolean deplacer(Point2D vect){
+          if(vect.getX())
+            this.getPosition().deplacer(vect);
+        }
             
     
 }
