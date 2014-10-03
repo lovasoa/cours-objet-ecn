@@ -1,5 +1,6 @@
 package sirop;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -77,4 +78,19 @@ public class PlateauJeu {
     }
     return true;
   }
+  
+  public List<Point2D> casesLibresAutourDe (Point2D reference){
+    List<Point2D> cases = new ArrayList<>();
+    for (int dx=-1; dx<=1; dx++) {
+      for (int dy=-1; dy<=1; dy++) {
+        if (dx==0 && dy==0) continue;
+        Point2D p = new Point2D(reference.getX()+dx,reference.getY()+dy);
+        if (caseLibre(p)) {
+          cases.add(p);
+        }
+      }
+    }
+    return cases;
+  }
+
 }
