@@ -1,1 +1,3 @@
-ce projet est libre; sous les temes de la license LGPLv3
+/*
+  Ce projet est libre; sous les temes de la license LGPLv3
+*/
