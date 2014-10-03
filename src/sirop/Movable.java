@@ -9,4 +9,5 @@ package sirop;
  */
 public interface Movable {
   boolean deplacer(Point2D vecteurDeplacement);
+  boolean deplacementAutorise(Point2D vecteurDeplacement);
 }

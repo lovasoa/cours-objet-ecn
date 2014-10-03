@@ -20,8 +20,16 @@ public class ObstacleMobile extends Obstacle implements Movable{
             return "ObstaclMobile.";}
         
         public boolean deplacer(Point2D vect){
-          if(vect.getX())
-            this.getPosition().deplacer(vect);
+            if (this.deplacementAutorise(vect)) {
+              this.getPosition().deplacer(vect);
+              return true;
+            }
+            return false;
+        }
+        
+        public boolean deplacementAutorise(Point2D vect) {
+          return (this.getPlateau().caseLibre(vect)) &&
+                  (vect.getX() == 0 || vect.getY() == 0);
         }
             
     
