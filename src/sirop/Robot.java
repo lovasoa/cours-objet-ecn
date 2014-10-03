@@ -97,6 +97,7 @@ public class Robot extends ElementJeu implements Movable{
       if(deplacementAutorise(vect)){
         this.getPosition().deplacer(vect);
         this.depenserEnergie(this.cout_deplacement);
+        this.depenserEnergie(1);
 		return true;
       }
       else return false;
