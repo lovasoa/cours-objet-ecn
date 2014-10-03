@@ -10,7 +10,7 @@ package sirop;
  * @author zhaoshuli
  */
 
-public class Obstacle extends ElementJeu {        
+public abstract class Obstacle extends ElementJeu {        
   /**Create a obstacle*/
   public Obstacle(Point2D PositionObs, PlateauJeu plateau){
       super(PositionObs, plateau);
