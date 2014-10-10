@@ -12,7 +12,7 @@ import java.util.List;
  * @author olojkine
  * @param <T> Type of the elements of the Iterable of the iterable
  */
-public class FilteredIterable<T> implements Iterable {
+public class FilteredIterable<T> implements Iterable<T> {
   private Iterable<T> iterable;
   private Class filterClass;
   public FilteredIterable(Iterable<T> iterable, Class filterClass) {
