@@ -18,7 +18,7 @@ public class ObstacleMobile extends Obstacle implements Movable{
     /**@return the type of the obstacle*/
         public String getType (){
             return "ObstaclMobile.";}
-    //change the position and return if it has been changed    
+    @Override     
         public boolean deplacer(Point2D vect){
             if (this.deplacementAutorise(vect)) {
               this.getPosition().deplacer(vect);
@@ -26,7 +26,7 @@ public class ObstacleMobile extends Obstacle implements Movable{
             }
             return false;
         }
-    //check if the position is available     
+    @Override     
         public boolean deplacementAutorise(Point2D vect) {
           return (this.getPlateau().caseLibre(this.getPosition().plus(vect))) &&
                   (vect.getX() == 0 || vect.getY() == 0);

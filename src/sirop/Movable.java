@@ -9,8 +9,8 @@ package sirop;
  */
 
 public interface Movable {
-  //change the position 
+  /** Changer la position **/ 
   boolean deplacer(Point2D vecteurDeplacement);
-  //return if it can change to the position
+  /** Vérifier si la position correspond la contrainte**/
   boolean deplacementAutorise(Point2D vecteurDeplacement);
 }

@@ -19,7 +19,7 @@ public class Robot extends ElementJeu implements Movable{
   private PlateauJeu plateau;
  
 
-	/** Crée un robot */
+	/** Créer un robot */
 	public Robot(String name, PlateauJeu plateau, Point2D position) {
     super(position, plateau);
 
@@ -85,7 +85,7 @@ public class Robot extends ElementJeu implements Movable{
   
     }
 
-    /** Déplace le robot et lui fait perdre de l'énergie*/
+    /** Déplacer le robot et lui fait perdre de l'énergie*/
   @Override
     public boolean deplacementAutorise(Point2D vect){
         return (vect.getX() <= 1 && 

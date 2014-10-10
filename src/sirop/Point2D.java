@@ -83,7 +83,7 @@ public class Point2D {
     this.setX(this.getX() + p.getX());
     this.setY(this.getY() + p.getY());
   }
-  //return true if the two points in the same position
+  /** Retourner true si les deux points sont identiques **/
   public boolean equals(Point2D p) {
     return p.getX() == this.getX() && p.getY() == this.getY();
   }
