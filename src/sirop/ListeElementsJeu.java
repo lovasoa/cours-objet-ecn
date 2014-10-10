@@ -16,21 +16,21 @@ public class ListeElementsJeu implements Iterable{
 
   private ArrayList<Robot> robots;
   private ArrayList<Obstacle> obstacles;
+  private ArrayList<ArrayList<ElementJeu>> all;
   
   public ListeElementsJeu() {
     this.robots = new ArrayList<>();
     this.obstacles = new ArrayList<>();
-    this.filter = null;
+    this.all = new ArrayList<>();
+    this.all.add((ArrayList<ElementJeu>)(ArrayList<?>)this.robots);
+    this.all.add((ArrayList<ElementJeu>)(ArrayList<?>)this.obstacles);
   }
   
   @Override
   public Iterator<ElementJeu> iterator() {
-    List<List<ElementJeu>> elems = new ArrayList<>();
-    elems.add((ArrayList<ElementJeu>)(ArrayList<?>) this.robots);
-    elems.add((ArrayList<ElementJeu>)(ArrayList<?>) this.obstacles);
-    String filter = this.filter;
-    this.filter = null;
-    return new IteratorOfIterables<ElementJeu>(elems);
+    Iterable<Iterable<ElementJeu>> els;
+    els = (Iterable<Iterable<ElementJeu>>)(Iterable<?>)this.all;
+    return (new IterableOfIterables<>(els)).iterator();
   }
   
   public void ajoutRobot(Robot robot) {
@@ -41,16 +41,6 @@ public class ListeElementsJeu implements Iterable{
     this.obstacles.add(obstacle);
   }
   
-  /**
-   * Filtre les éléments d'une classe donnée
-   * Lors de la prochaine itération, seuls les éléments de la classe donnée
-   * seront retournés
-   * @param className le nom de la classe
-   */
-  public void setFilter (String className) {
-    this.filter = className;
-  }
-
   public ArrayList<Robot> getRobots() {
     return robots;
   }
