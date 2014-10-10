@@ -37,6 +37,7 @@ class IteratorOfIterables <T> implements Iterator{
   }
   
   @Override
+
   public T next() {
     while (!this.curIterator.hasNext()) {
       this.curIterator = this.elems.next().iterator();
@@ -45,6 +46,7 @@ class IteratorOfIterables <T> implements Iterator{
   }
 
   @Override
+
   public boolean hasNext() {
     return this.curIterator.hasNext() || this.elems.hasNext();
   }

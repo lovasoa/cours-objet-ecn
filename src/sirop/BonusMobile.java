@@ -16,7 +16,7 @@ public class BonusMobile extends Bonus{
     /**@return the type of the bonus*/
         public String getType (){
             return "BonuslMobile.";}
-        
+    /** Déplacer le bonus **/    
         public boolean deplacer(Point2D vect){
               this.getPosition().deplacer(vect);
               return true;

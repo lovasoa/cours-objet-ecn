@@ -18,7 +18,7 @@ public class PlateauJeu {
   private ArrayList<Robot> robots;
   private ArrayList<Obstacle> obstacles;
   private ArrayList<Bonus> bonuses;
-//creat a PlateauJeu
+/** Créer un PlateauJeu **/
   public PlateauJeu(int largeur, int hauteur) {
     this.largeur = largeur;
     this.hauteur = hauteur;
@@ -26,12 +26,12 @@ public class PlateauJeu {
     obstacles = new ArrayList<>(0);
     bonuses = new ArrayList<>(0);
   }
-//add a RobotNeuneu  
+
   public void ajouterRobotNeuneu(String nom, Point2D pos) {
     Robot robot = new RobotNeuneu(nom, this, pos);
     robots.add(robot);
   }
-//print out the elements of robot and ask if creat more  
+/** Afficher tous les éléments et demander si le utilisateur veux créer plus **/ 
   public void tourDeJeu() {
     boolean continuer = true;
     Scanner scanner = new Scanner(System.in);
@@ -86,7 +86,7 @@ public class PlateauJeu {
     }
     return true;
   }
-  //return true if the cases aroud the case are empty
+  /** Rtourner true si les case autour sont libres**/
   public List<Point2D> casesLibresAutourDe (Point2D reference){
     List<Point2D> cases = new ArrayList<>();
     for (int dx=-1; dx<=1; dx++) {
