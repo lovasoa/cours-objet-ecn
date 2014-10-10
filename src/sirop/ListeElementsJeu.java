@@ -16,7 +16,6 @@ public class ListeElementsJeu implements Iterable{
 
   private ArrayList<Robot> robots;
   private ArrayList<Obstacle> obstacles;
-  private String filter;
   
   public ListeElementsJeu() {
     this.robots = new ArrayList<>();
@@ -31,7 +30,7 @@ public class ListeElementsJeu implements Iterable{
     elems.add((ArrayList<ElementJeu>)(ArrayList<?>) this.obstacles);
     String filter = this.filter;
     this.filter = null;
-    return new IteratorOfLists<ElementJeu>(elems);
+    return new IteratorOfIterables<ElementJeu>(elems);
   }
   
   public void ajoutRobot(Robot robot) {
