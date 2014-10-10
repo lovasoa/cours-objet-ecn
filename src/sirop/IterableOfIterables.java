@@ -13,8 +13,8 @@ import java.util.List;
  * @param <T> Type of the elements of the Iterable of the iterable
  */
 public class IterableOfIterables<T> implements Iterable {
-  private Iterable<Iterable<T>> iterable;
-  public IterableOfIterables(Iterable<Iterable<T>> iterable) {
+  private final Iterable<? extends Iterable<T>> iterable;
+  public IterableOfIterables(Iterable<? extends Iterable<T>> iterable) {
     this.iterable = iterable;
   }
 
@@ -25,29 +25,32 @@ public class IterableOfIterables<T> implements Iterable {
 }
 
 class IteratorOfIterables <T> implements Iterator{
-  private final Iterator<Iterable<T>> elems;
+  private final Iterator<? extends Iterable<T>> elems;
   private Iterator<T> curIterator;
   
   /**
    * @param iterable An iterator that yields other iterators
    */
-  public IteratorOfIterables(Iterable<Iterable<T>> iterable) {
+  public IteratorOfIterables(Iterable<? extends Iterable<T>> iterable) {
     this.elems = iterable.iterator();
     this.curIterator = this.elems.next().iterator();
   }
   
-  @Override
-
-  public T next() {
-    while (!this.curIterator.hasNext()) {
+  private void forward() {
+    while (!this.curIterator.hasNext() && this.elems.hasNext()) {
       this.curIterator = this.elems.next().iterator();
     }
+  }
+  
+  @Override
+  public T next() {
+    this.forward();
     return curIterator.next();
   }
 
   @Override
-
   public boolean hasNext() {
-    return this.curIterator.hasNext() || this.elems.hasNext();
+    this.forward();
+    return this.curIterator.hasNext();
   }
 }

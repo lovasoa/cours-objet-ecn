@@ -12,25 +12,23 @@ import java.util.List;
  *
  * @author olojkine
  */
-public class ListeElementsJeu implements Iterable{
+public class ListeElementsJeu implements Iterable<ElementJeu>{
 
   private ArrayList<Robot> robots;
   private ArrayList<Obstacle> obstacles;
-  private ArrayList<ArrayList<ElementJeu>> all;
+  private ArrayList<ArrayList<ElementJeu>> allLists;
   
   public ListeElementsJeu() {
     this.robots = new ArrayList<>();
     this.obstacles = new ArrayList<>();
-    this.all = new ArrayList<>();
-    this.all.add((ArrayList<ElementJeu>)(ArrayList<?>)this.robots);
-    this.all.add((ArrayList<ElementJeu>)(ArrayList<?>)this.obstacles);
+    this.allLists = new ArrayList<>();
+    this.allLists.add((ArrayList<ElementJeu>)(ArrayList<?>)this.robots);
+    this.allLists.add((ArrayList<ElementJeu>)(ArrayList<?>)this.obstacles);
   }
   
   @Override
   public Iterator<ElementJeu> iterator() {
-    Iterable<Iterable<ElementJeu>> els;
-    els = (Iterable<Iterable<ElementJeu>>)(Iterable<?>)this.all;
-    return (new IterableOfIterables<>(els)).iterator();
+    return (new IterableOfIterables<ElementJeu>(this.allLists)).iterator();
   }
   
   public void ajoutRobot(Robot robot) {
@@ -47,6 +45,18 @@ public class ListeElementsJeu implements Iterable{
 
   public ArrayList<Obstacle> getObstacles() {
     return obstacles;
+  }
+  
+  public Iterable<ElementJeu> filter(Class filterClass) {
+    return (new FilteredIterable<ElementJeu>(this, filterClass));
+  }
+
+  int size() {
+    int sum=0;
+    for (ArrayList liste: this.allLists) {
+      sum += liste.size();
+    }
+    return sum;
   }
   
 }
