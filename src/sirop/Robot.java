@@ -11,25 +11,25 @@ public class Robot extends ElementJeu implements Movable{
   public static final int ROBOT_DEFAUT_ENERGIE = 100;
   public static final int ROBOT_DEFAUT_SANTE = 100;
 
-	private String name;
-	private int energy = ROBOT_DEFAUT_ENERGIE;
-	private int health = ROBOT_DEFAUT_SANTE;
+  private String name;
+  private int energy = ROBOT_DEFAUT_ENERGIE;
+  private int health = ROBOT_DEFAUT_SANTE;
   private int cout_deplacement = 1;
   private static int nbre_instances = 0;
   private PlateauJeu plateau;
  
 
-	/** Créer un robot */
-	public Robot(String name, PlateauJeu plateau, Point2D position) {
+  /** Créer un robot */
+  public Robot(String name, PlateauJeu plateau, Point2D position) {
     super(position, plateau);
 
     this.nbre_instances ++;
-		this.name = name;
+    this.name = name;
     this.plateau=plateau;
-	}
+  }
 
-	/** @param health new health value */
-	public boolean setHealth(int health) {
+  /** @param health new health value */
+  public boolean setHealth(int health) {
     if (health > ROBOT_MAX_ENERGIE) {return false;}
     this.health = health;
     return true;
