@@ -47,13 +47,13 @@ public class ListeElementsJeu implements Iterable<ElementJeu>{
     return obstacles;
   }
   
-  public Iterable<ElementJeu> filter(Class filterClass) {
+  public Iterable<ElementJeu> filter(Class<? extends ElementJeu> filterClass) {
     return (new FilteredIterable<ElementJeu>(this, filterClass));
   }
 
   int size() {
     int sum=0;
-    for (ArrayList liste: this.allLists) {
+    for (ArrayList<? extends ElementJeu> liste: this.allLists) {
       sum += liste.size();
     }
     return sum;
