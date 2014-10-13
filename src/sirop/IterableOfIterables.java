@@ -12,26 +12,26 @@ import java.util.List;
  * @author olojkine
  * @param <T> Type of the elements of the Iterable of the iterable
  */
-public class IterableOfIterables<T> implements Iterable {
-  private final Iterable<? extends Iterable<T>> iterable;
-  public IterableOfIterables(Iterable<? extends Iterable<T>> iterable) {
+public class IterableOfIterables<T> implements Iterable<T> {
+  private final Iterable<? extends Iterable<? extends T>> iterable;
+  public IterableOfIterables(Iterable<? extends Iterable<? extends T>> iterable) {
     this.iterable = iterable;
   }
 
   @Override
-  public Iterator iterator() {
-    return new IteratorOfIterables(this.iterable);
+  public Iterator<T> iterator() {
+    return new IteratorOfIterables<T>(this.iterable);
   }
 }
 
-class IteratorOfIterables <T> implements Iterator{
-  private final Iterator<? extends Iterable<T>> elems;
-  private Iterator<T> curIterator;
+class IteratorOfIterables <T> implements Iterator<T>{
+  private final Iterator<? extends Iterable<? extends T>> elems;
+  private Iterator<? extends T> curIterator;
   
   /**
    * @param iterable An iterator that yields other iterators
    */
-  public IteratorOfIterables(Iterable<? extends Iterable<T>> iterable) {
+  public IteratorOfIterables(Iterable<? extends Iterable<? extends T>> iterable) {
     this.elems = iterable.iterator();
     this.curIterator = this.elems.next().iterator();
   }
@@ -52,5 +52,10 @@ class IteratorOfIterables <T> implements Iterator{
   public boolean hasNext() {
     this.forward();
     return this.curIterator.hasNext();
+  }
+
+  @Override
+  public void remove() {
+    this.curIterator.remove();
   }
 }

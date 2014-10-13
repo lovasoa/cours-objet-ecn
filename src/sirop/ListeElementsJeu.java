@@ -16,14 +16,14 @@ public class ListeElementsJeu implements Iterable<ElementJeu>{
 
   private ArrayList<Robot> robots;
   private ArrayList<Obstacle> obstacles;
-  private ArrayList<ArrayList<ElementJeu>> allLists;
+  private ArrayList<ArrayList<? extends ElementJeu>> allLists;
   
   public ListeElementsJeu() {
     this.robots = new ArrayList<>();
     this.obstacles = new ArrayList<>();
     this.allLists = new ArrayList<>();
-    this.allLists.add((ArrayList<ElementJeu>)(ArrayList<?>)this.robots);
-    this.allLists.add((ArrayList<ElementJeu>)(ArrayList<?>)this.obstacles);
+    this.allLists.add(this.robots);
+    this.allLists.add(this.obstacles);
   }
   
   @Override
