@@ -23,7 +23,7 @@ public class Robot extends ElementJeu implements Movable{
   public Robot(String name, PlateauJeu plateau, Point2D position) {
     super(position, plateau);
 
-    this.nbre_instances ++;
+    Robot.nbre_instances ++;
     this.name = name;
     this.plateau=plateau;
   }
