@@ -16,14 +16,14 @@ public class ListeElementsJeu implements Iterable<ElementJeu>{
 
   private ArrayList<Robot> robots;
   private ArrayList<Obstacle> obstacles;
-  private ArrayList<ArrayList<ElementJeu>> allLists;
+  private ArrayList<ArrayList<? extends ElementJeu>> allLists;
   
   public ListeElementsJeu() {
     this.robots = new ArrayList<>();
     this.obstacles = new ArrayList<>();
     this.allLists = new ArrayList<>();
-    this.allLists.add((ArrayList<ElementJeu>)(ArrayList<?>)this.robots);
-    this.allLists.add((ArrayList<ElementJeu>)(ArrayList<?>)this.obstacles);
+    this.allLists.add(this.robots);
+    this.allLists.add(this.obstacles);
   }
   
   @Override
@@ -47,13 +47,13 @@ public class ListeElementsJeu implements Iterable<ElementJeu>{
     return obstacles;
   }
   
-  public Iterable<ElementJeu> filter(Class filterClass) {
+  public Iterable<ElementJeu> filter(Class<? extends ElementJeu> filterClass) {
     return (new FilteredIterable<ElementJeu>(this, filterClass));
   }
 
   int size() {
     int sum=0;
-    for (ArrayList liste: this.allLists) {
+    for (ArrayList<? extends ElementJeu> liste: this.allLists) {
       sum += liste.size();
     }
     return sum;
