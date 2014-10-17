@@ -1,9 +1,12 @@
 package sirop;
 
+import java.io.IOException;
+import java.io.Serializable;
+
 /**
  * Représente un point en deux dimensions
  */
-public class Point2D {
+public class Point2D implements Serializable{
 	private int x;
 	private int y;
 
@@ -87,4 +90,14 @@ public class Point2D {
   public boolean equals(Point2D p) {
     return p.getX() == this.getX() && p.getY() == this.getY();
   }
+  
+  public void writeObject(java.io.ObjectOutputStream out) throws IOException {
+    out.writeInt(x);
+    out.writeInt(y);
+  }
+  
+  public void readObject(java.io.ObjectInputStream in) throws IOException {
+    this.x = in.readInt();
+    this.y = in.readInt();
+  };
 }

@@ -4,15 +4,22 @@
 
 package sirop;
 
+import java.io.IOException;
+import java.io.InvalidClassException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author olojkine
  */
-public class ListeElementsJeu implements Iterable<ElementJeu>{
+public class ListeElementsJeu implements Iterable<ElementJeu>, Serializable{
 
   private ArrayList<Robot> robots;
   private ArrayList<Obstacle> obstacles;
@@ -57,6 +64,30 @@ public class ListeElementsJeu implements Iterable<ElementJeu>{
       sum += liste.size();
     }
     return sum;
+  }
+  
+  public void writeObject(ObjectOutputStream out) throws IOException {
+    for (ElementJeu elem : this) {
+      out.writeUTF(elem.getClass().getName());
+      elem.writeObject(out);
+      out.writeChar('\n');
+    }
+  }
+
+  public void readObject(ObjectInputStream in) throws IOException {
+    while (true) {
+      String cname = in.readUTF();
+      try {
+        Class elemclass = Class.forName(cname);
+        if (ElementJeu.class.isAssignableFrom(elemclass)){
+          ElementJeu elem = (ElementJeu)elemclass.newInstance();
+        } else {
+          throw new InvalidClassException(cname+" is not a subclass of ElementJeu");
+        }
+      } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | InvalidClassException ex) {
+        System.err.println("Impossible de créer un élément de la classe "+cname);
+      }
+    }
   }
   
 }

@@ -1,4 +1,9 @@
 package sirop;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 /**
  * @author lovasoa
  **/
@@ -16,4 +21,14 @@ public class BorneSante extends Bonus {
   /**@return the type of the bonus*/
   public String getType(){
     return"BorneSante";}
+  
+  public void writeObject(ObjectOutputStream out) throws IOException {
+    super.writeObject(out);
+    out.writeInt(this.getPointsSante());
+  }
+  
+  public void readObject(ObjectInputStream in) throws IOException {
+    super.readObject(in);
+    this.setPointsSante(in.readInt());
+  }
 }

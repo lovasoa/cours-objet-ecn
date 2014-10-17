@@ -4,6 +4,9 @@
 
 package sirop;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 /*
  * Représente un obstacle qui peut rendre de l'énergie
  * ou de la santé à un robot
@@ -55,4 +58,19 @@ public abstract class Bonus extends Obstacle {
             +"\nLe bonus du pointSante est"+this.gainSante;
             return res;}
 
+  public int getPointsSante() {
+    return pointsSante;
+  }
+
+  public int getPointsEnergie() {
+    return pointsEnergie;
+  }
+
+  public void setPointsSante(int pointsSante) {
+    this.pointsSante = pointsSante;
+  }
+
+  public void setPointsEnergie(int pointsEnergie) {
+    this.pointsEnergie = pointsEnergie;
+  }
 }

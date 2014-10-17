@@ -5,6 +5,10 @@
  */
 package sirop;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 /**
  *
  * @author zhaoshuli
@@ -30,5 +34,15 @@ public abstract class Obstacle extends ElementJeu {
       String res="C'est un "+this.getType()+"La position de l'obstacle est ["+this.getPosition().getX()
       +","+this.getPosition().getY()+"].";
       return res;
+  }
+  
+  public void writeObject(ObjectOutputStream out) throws IOException {
+    this.getPosition().writeObject(out);
+  }
+  
+  public void readObject(ObjectInputStream in) throws IOException {
+    Point2D p = new Point2D(0,0);
+    p.readObject(in);
+    this.setPosition(p);
   }
 }

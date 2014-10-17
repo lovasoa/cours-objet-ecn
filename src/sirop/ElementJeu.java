@@ -2,6 +2,10 @@
 */
 package sirop;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 /**
  *
  * @author olojkine
@@ -28,4 +32,8 @@ public abstract class ElementJeu {
   public PlateauJeu getPlateau() {
     return this.plateau;
   }
+  
+  public abstract void writeObject(ObjectOutputStream out) throws IOException;
+  public abstract void readObject(ObjectInputStream out) throws IOException;
+
 }

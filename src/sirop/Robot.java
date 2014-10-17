@@ -1,10 +1,15 @@
 package sirop;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 /**
  * Représente un robot
  * @author lovasoa
  */
-public class Robot extends ElementJeu implements Movable{
+public class Robot extends ElementJeu implements Movable, Serializable{
 
   public static final int ROBOT_MAX_ENERGIE = 150;
   public static final int ROBOT_MAX_SANTE = 200;
@@ -103,11 +108,25 @@ public class Robot extends ElementJeu implements Movable{
       else return false;
         //To change body of generated methods, choose Tools | Templates.
     }
-
     
-   
-
-   
+  public void writeObject(ObjectOutputStream out) throws IOException {
+    out.writeUTF(name);
+    this.getPosition().writeObject(out);
+    out.writeInt(health);
+    out.writeInt(energy);
+  }
+  
+  public void readObject(ObjectInputStream in) throws IOException{
+    this.name = in.readUTF();
+    
+    Point2D p = new Point2D(0,0);
+    p.readObject(in);
+    this.setPosition(p);
+    
+    this.health = in.readInt();
+    this.energy = in.readInt();
+  }
+  
   
 }
 

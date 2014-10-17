@@ -1,7 +1,10 @@
 package sirop;
 
-import java.util.List;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -11,7 +14,7 @@ import java.util.Scanner;
 /**
  * Décrit un plateau de jeu
  */
-public class PlateauJeu {
+public class PlateauJeu implements Serializable {
   private int largeur = 100;
   private int hauteur = 100;
 
@@ -79,5 +82,13 @@ public class PlateauJeu {
     }
     return cases;
   }
+  
+ public void writeObject(ObjectOutputStream out) throws IOException {
+   out.writeUTF("Largeur");
+   out.writeInt(this.largeur);
+   out.writeUTF("Hauteur");
+   out.writeInt(this.hauteur);
+   this.listeElementsJeu.writeObject(out);
+ }
 
 }
