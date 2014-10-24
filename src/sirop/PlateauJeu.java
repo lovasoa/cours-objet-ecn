@@ -86,7 +86,6 @@ public class PlateauJeu implements Serializable {
     }
     return cases;
   }
-
   
  public void writeObject(ObjectOutputStream out) throws IOException {
   out.writeUTF("Largeur");
@@ -109,6 +108,4 @@ public class PlateauJeu implements Serializable {
    this.hauteur = in.readInt();
    this.listeElementsJeu.readObject(in);
  }
-
-    
 }

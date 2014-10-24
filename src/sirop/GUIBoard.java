@@ -227,11 +227,7 @@ public class GUIBoard extends JFrame {
         maFrame.getContentPane().add(jPanelTexte, BorderLayout.EAST);
         
         pack();
-<<<<<<< Updated upstream
-        
-    }        
-}
-=======
+
 
     }        
     
@@ -280,4 +276,3 @@ if (returnVal == JFileChooser.APPROVE_OPTION) {
   }
 
 */
->>>>>>> Stashed changes
