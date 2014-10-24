@@ -15,9 +15,8 @@ public class BorneEnergie extends Bonus {
 /**Create a mobile bonus*/
    public BorneEnergie(PlateauJeu plateau) {
     super(0, BORNE_MAX_ENERGIE ,plateau);
-    iconBorneEnergie.createImageIcon("/resources/eco_green_energy.png", "C'est l'image de borne energie.");
-    iconBorneEnergie.setIconName("iconBorneEnergie");
-    board.displayGameElement(pos, iconBorneEnergie,iconBorneEnergie.getIconName() , "Creer un "+this.getType());
+    iconBorneEnergie = new Icon("/resources/eco_green_energy.png", "iconBorneEnergie");
+    plateau.getBoard().displayGameElement(this.getPosition(), iconBorneEnergie, iconBorneEnergie.getIconName() , "Creer un "+this.getType());
   }
   
   /**@return the type of the bonus*/
