@@ -15,14 +15,13 @@ import java.io.ObjectOutputStream;
 public class BorneSante extends Bonus {
   private final static int BORNE_MAX_SANTE = 100;
   private Icon iconBorneSante;
-  private GUIBoard board;
   
 /**Create a mobile bonus*/
   public BorneSante(PlateauJeu plateau) {
     super(BORNE_MAX_SANTE, 0, plateau);
-    iconBorneSante.createImageIcon("/resources/eco_green_tree.png", "C'est l'image de borne sante.");
+    iconBorneSante = new Icon("/resources/eco_green_tree.png", "C'est l'image de borne sante.");
     iconBorneSante.setIconName("iconBorneSante");
-    board.displayGameElement(pos, iconBorneSante,iconBorneSante.getIconName() , "Creer un "+this.getType());
+    plateau.getBoard().displayGameElement(this.getPosition(), iconBorneSante,iconBorneSante.getIconName() , "Creer un "+this.getType());
   }
  
   /**@return the type of the bonus*/
