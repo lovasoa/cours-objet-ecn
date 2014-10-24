@@ -29,8 +29,21 @@ public class Robot extends ElementJeu implements Movable, Serializable{
     super(position, plateau);
 
     Robot.nbre_instances ++;
-    this.name = name;
+    this.setName(name);
     this.plateau=plateau;
+  }
+
+  /** Créer un robot */
+  public Robot(PlateauJeu plateau) {
+    super(plateau);
+
+    Robot.nbre_instances ++;
+    this.setName("AnonymousRobot");
+    this.plateau = plateau;
+  }
+
+  public void setName(String name) {
+    this.name = name.replace(' ', '_').replace('\t', '_');
   }
 
   /** @param health new health value */

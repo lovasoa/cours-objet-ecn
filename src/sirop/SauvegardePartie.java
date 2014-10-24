@@ -23,19 +23,19 @@ import java.util.StringTokenizer;
  * @author olojkine
  */
 public class SauvegardePartie {
-  public SauvegardePartie () throws IOException {
-    File fichier = new File("/home/olojkine/test.txt");
+  public SauvegardePartie (PlateauJeu plateau) throws IOException {
+    File fichier = new File("/home/olojkine/plateaujeu.txt");
     if (!fichier.exists()) fichier.createNewFile();
     FileOutputStream os = new FileOutputStream(fichier);
     ObjectOutputStream oos =  new TextOutputStream(os) ;
-    RobotNeuneu p = new RobotNeuneu("Débilos", new PlateauJeu(10, 10), new Point2D(5,6));
-    p.writeObject(oos);
+    plateau.writeObject(oos);
     
-    RobotNeuneu r2 = new RobotNeuneu("Débilissimo", new PlateauJeu(100, 10), new Point2D(15,6));
+    PlateauJeu nvPlateau = new PlateauJeu(0,0);
     FileInputStream is = new FileInputStream(fichier);
     ObjectInputStream ois =  new TextInputStream(is) ;
-    r2.readObject(ois);
-    System.out.println(r2);
+    nvPlateau.readObject(ois);
+    System.out.println(nvPlateau);
+    nvPlateau.tourDeJeu();
   }
 }
 
@@ -83,8 +83,8 @@ class TextInputStream extends ObjectInputStream {
   }
   
   private void setSyntax() {
-    this.st.wordChars('a', 'z');
-    this.st.wordChars('A', 'Z');
+    this.st.wordChars('a', 'Z');
+    this.st.wordChars('_', '_');
     this.st.whitespaceChars(' ', ' ');
     this.st.whitespaceChars('\t', '\t');
     this.st.parseNumbers();

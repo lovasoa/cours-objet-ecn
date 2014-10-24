@@ -9,6 +9,8 @@ import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,8 +26,10 @@ public class ListeElementsJeu implements Iterable<ElementJeu>, Serializable{
   private ArrayList<Robot> robots;
   private ArrayList<Obstacle> obstacles;
   private ArrayList<ArrayList<? extends ElementJeu>> allLists;
+  private PlateauJeu plateau;
   
-  public ListeElementsJeu() {
+  public ListeElementsJeu(PlateauJeu plateau) {
+    this.plateau = plateau;
     this.robots = new ArrayList<>();
     this.obstacles = new ArrayList<>();
     this.allLists = new ArrayList<>();
@@ -76,16 +80,38 @@ public class ListeElementsJeu implements Iterable<ElementJeu>, Serializable{
 
   public void readObject(ObjectInputStream in) throws IOException {
     while (true) {
-      String cname = in.readUTF();
+      String cname = "";
+      try {
+        cname = in.readUTF();
+      } catch(IOException ex) {
+        return;
+      }
       try {
         Class elemclass = Class.forName(cname);
         if (ElementJeu.class.isAssignableFrom(elemclass)){
-          ElementJeu elem = (ElementJeu)elemclass.newInstance();
+          Class[] params = new Class[1];
+          params[0] = PlateauJeu.class;
+          Constructor constructor = elemclass.getDeclaredConstructor(params);
+          ElementJeu elem = (ElementJeu) constructor.newInstance(this.plateau);
+          elem.readObject(in);
+          if (Robot.class.isAssignableFrom(elemclass)) {
+            this.ajoutRobot((Robot) elem);
+          } else if (Obstacle.class.isAssignableFrom(elemclass)) {
+            this.ajoutObstacle((Obstacle) elem);
+          } else {
+            throw new InvalidClassException(
+                    "Impossible de stocker un élément de classe "
+                            + cname
+                            + " dans ListeElementsJeu");
+          }
         } else {
           throw new InvalidClassException(cname+" is not a subclass of ElementJeu");
         }
-      } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | InvalidClassException ex) {
+      } catch (ClassNotFoundException | InstantiationException |
+              IllegalAccessException | InvalidClassException | SecurityException |
+              NoSuchMethodException | InvocationTargetException ex) {
         System.err.println("Impossible de créer un élément de la classe "+cname);
+        throw new IOException("Invalid file: " + ex);
       }
     }
   }

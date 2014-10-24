@@ -20,6 +20,10 @@ public abstract class ElementJeu {
     this.position = pos;
     this.plateau = plateau;
   }
+  public ElementJeu (PlateauJeu plateau) {
+    this.position = new Point2D(0,0);
+    this.plateau = plateau;
+  }
   /** Retourner la position**/
   public Point2D getPosition() {
     return this.position;

@@ -1,6 +1,7 @@
 package sirop;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class PlateauJeu implements Serializable {
   public PlateauJeu(int largeur, int hauteur) {
     this.largeur = largeur;
     this.hauteur = hauteur;
-    this.listeElementsJeu = new ListeElementsJeu();
+    this.listeElementsJeu = new ListeElementsJeu(this);
   }
 
   public void ajouterRobotNeuneu(String nom, Point2D pos) {
@@ -91,15 +92,18 @@ public class PlateauJeu implements Serializable {
    out.writeInt(this.hauteur);
    this.listeElementsJeu.writeObject(out);
  }
+ 
+  public void readObject(ObjectInputStream in) throws IOException {
+   if (!"Largeur".equals(in.readUTF())) {
+     throw new IOException("Pas de largeur");
+   }
+   this.largeur = in.readInt();
+   if (!"Hauteur".equals(in.readUTF())) {
+     throw new IOException("Pas de heuteur");
+   }
+   this.hauteur = in.readInt();
+   this.listeElementsJeu.readObject(in);
+ }
 
-  /**
-   * Cree l'interface avec les dimensions du plateau
-   * @param l : largeur de la GUI (boutons)
-   * @param h : hauteur de la GUI (boutons)
-   */
-  public void creerGUI(int l, int h) {
-    this.monInterface = new GUIBoard(l, h);
-    this.monInterface.setVisible(true);
-  }
     
 }
