@@ -137,7 +137,7 @@ public class GUIBoard extends JFrame {
                   jPlateau[i][j].setMaximumSize(new java.awt.Dimension(100, 100));
                   jPlateau[i][j].setMinimumSize(new java.awt.Dimension(10, 10));
                   jPlateau[i][j].setPreferredSize(new java.awt.Dimension(40, 40));
-                  jPlateau[i][j].setIcon(iconWall);
+                  jPlateau[i][j].setIcon((javax.swing.Icon) iconWall);
                 
                   // Ajout du bouton nouvellement cree
                   jPanelBoutons.add(jPlateau[i][j],i,j);
