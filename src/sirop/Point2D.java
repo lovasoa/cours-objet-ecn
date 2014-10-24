@@ -99,5 +99,10 @@ public class Point2D implements Serializable{
   public void readObject(java.io.ObjectInputStream in) throws IOException {
     this.x = in.readInt();
     this.y = in.readInt();
-  };
+  }
+
+  @Override
+  public String toString() {
+    return "[" + x + ", " + y + ']';
+  }
 }

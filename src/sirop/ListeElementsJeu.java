@@ -72,7 +72,7 @@ public class ListeElementsJeu implements Iterable<ElementJeu>, Serializable{
   
   public void writeObject(ObjectOutputStream out) throws IOException {
     for (ElementJeu elem : this) {
-      out.writeUTF(elem.getClass().getName());
+      out.writeUTF(elem.getClass().getSimpleName());
       elem.writeObject(out);
       out.writeChar('\n');
     }
@@ -82,7 +82,7 @@ public class ListeElementsJeu implements Iterable<ElementJeu>, Serializable{
     while (true) {
       String cname = "";
       try {
-        cname = in.readUTF();
+        cname = getClass().getPackage().getName() + "." + in.readUTF();
       } catch(IOException ex) {
         return;
       }

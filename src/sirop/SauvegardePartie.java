@@ -23,19 +23,32 @@ import java.util.StringTokenizer;
  * @author olojkine
  */
 public class SauvegardePartie {
-  public SauvegardePartie (PlateauJeu plateau) throws IOException {
-    File fichier = new File("/home/olojkine/plateaujeu.txt");
+  public SauvegardePartie (PlateauJeu plateau) {
+
+  }
+
+  /**
+   * Charge un plateau de jeu à partir d'un fichier
+   * @param nomFichier
+   * @return le plateau de jeu contenu dans le fichier
+   * @throws IOException
+   */
+  public static PlateauJeu load(String nomFichier) throws IOException {
+    PlateauJeu nvPlateau = new PlateauJeu(0,0);
+    FileInputStream is = new FileInputStream(nomFichier);
+    ObjectInputStream ois =  new TextInputStream(is) ;
+    nvPlateau.readObject(ois);
+    is.close();
+    return nvPlateau;
+  }
+
+  public static void save(String nomFichier, PlateauJeu plateau) throws IOException {
+    File fichier = new File(nomFichier);
     if (!fichier.exists()) fichier.createNewFile();
     FileOutputStream os = new FileOutputStream(fichier);
     ObjectOutputStream oos =  new TextOutputStream(os) ;
     plateau.writeObject(oos);
-    
-    PlateauJeu nvPlateau = new PlateauJeu(0,0);
-    FileInputStream is = new FileInputStream(fichier);
-    ObjectInputStream ois =  new TextInputStream(is) ;
-    nvPlateau.readObject(ois);
-    System.out.println(nvPlateau);
-    nvPlateau.tourDeJeu();
+    os.close();
   }
 }
 
@@ -65,7 +78,9 @@ class TextOutputStream extends ObjectOutputStream {
   @Override
   public void writeUTF(String str) throws IOException {
     out.write(str.getBytes("UTF-8"));
-    out.write(' ');
+    if (str.trim().length() != 0) {
+      out.write(' ');
+    }
   }
 
   @Override

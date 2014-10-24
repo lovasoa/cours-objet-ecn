@@ -11,7 +11,11 @@ public class BorneEnergie extends Bonus {
   private final static int BORNE_MAX_ENERGIE = 100;
 /**Create a mobile bonus*/
   public BorneEnergie(Point2D pos, PlateauJeu plateau) {
-    super(pos, 0, BORNE_MAX_ENERGIE, plateau);
+    super(0, BORNE_MAX_ENERGIE, plateau, pos);
+  }
+  
+   public BorneEnergie(PlateauJeu plateau) {
+    super(0, BORNE_MAX_ENERGIE ,plateau);
   }
   
   /**@return the type of the bonus*/

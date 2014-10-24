@@ -19,6 +19,11 @@ public abstract class Obstacle extends ElementJeu {
   public Obstacle(Point2D PositionObs, PlateauJeu plateau){
       super(PositionObs, plateau);
   }
+  
+    /**Create a obstacle*/
+  public Obstacle(PlateauJeu plateau){
+      super(plateau);
+  }
 
   /**@print the position*/
   public void AffichageObs(){

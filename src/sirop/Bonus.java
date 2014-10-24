@@ -20,13 +20,21 @@ public abstract class Bonus extends Obstacle {
   private int gainEnergie = 0;
   
 /** Créer un bonus dans platuea **/
-  public Bonus(Point2D pos, int pointsSante, int pointsEnergie, PlateauJeu plateau) {
+  public Bonus(int pointsSante, int pointsEnergie, PlateauJeu plateau, Point2D pos) {
     super(pos, plateau);
     this.pointsEnergie = pointsEnergie;
     this.gainEnergie = pointsEnergie / 10;
     this.pointsSante = pointsSante;
     this.gainSante = pointsSante / 10;
   }
+  public Bonus(int pointsSante, int pointsEnergie, PlateauJeu plateau) {
+    super(plateau);
+    this.pointsEnergie = pointsEnergie;
+    this.gainEnergie = pointsEnergie / 10;
+    this.pointsSante = pointsSante;
+    this.gainSante = pointsSante / 10;
+  }
+    
 /** Donner la santé au robot s'il en reste encore**/
   private boolean appliquerBonusSante(Robot robot) {
     if (this.pointsSante >= this.gainSante
@@ -53,10 +61,11 @@ public abstract class Bonus extends Obstacle {
     return "Bonus sans type";}
   /** Redifinir toString pour afficher tous les informations**/
   public String toString(){
-    String res="C'est un "+this.getType()+"\nLa position de le bonus est ["+this.getPosition().getX()
-            +","+this.getPosition().getY()+"]."+"\nLe bonus du pointEnergie est"+this.gainEnergie
-            +"\nLe bonus du pointSante est"+this.gainSante;
-            return res;}
+    return this.getType()+": "+
+            "position=" + this.getPosition() +
+            " gainEnergie="+this.gainEnergie
+            +" gainSante="+this.gainSante;
+   }
 
   public int getPointsSante() {
     return pointsSante;
