@@ -14,10 +14,6 @@ public class ObstacleMobile extends Obstacle implements Movable {
   /**
    * Create a mobile obstacle
    */
-  public ObstacleMobile(Point2D PositionMobile, PlateauJeu plateau) {
-    super(PositionMobile, plateau);
-  }
-  
   public ObstacleMobile(PlateauJeu plateau) {
     super(plateau);
   }

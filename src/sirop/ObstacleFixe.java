@@ -14,13 +14,6 @@ public class ObstacleFixe extends Obstacle {
   /**
    * Create a fixed obstacle
    */
-  public ObstacleFixe(Point2D PositionFixe, PlateauJeu plateau) {
-    super(PositionFixe, plateau);
-  }
-
-  /**
-   * Create a fixed obstacle
-   */
   public ObstacleFixe(PlateauJeu plateau) {
     super(plateau);
   }

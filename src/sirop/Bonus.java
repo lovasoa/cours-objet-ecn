@@ -21,7 +21,8 @@ public abstract class Bonus extends Obstacle {
   
 /** Créer un bonus dans platuea **/
   public Bonus(int pointsSante, int pointsEnergie, PlateauJeu plateau, Point2D pos) {
-    super(pos, plateau);
+    super(plateau);
+    this.setPosition(pos);
     this.pointsEnergie = pointsEnergie;
     this.gainEnergie = pointsEnergie / 10;
     this.pointsSante = pointsSante;
