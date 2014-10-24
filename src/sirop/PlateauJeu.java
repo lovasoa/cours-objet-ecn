@@ -84,6 +84,7 @@ public class PlateauJeu implements Serializable {
     }
     return cases;
   }
+<<<<<<< Updated upstream
   
  public void writeObject(ObjectOutputStream out) throws IOException {
   out.writeUTF("Largeur");
@@ -108,4 +109,6 @@ public class PlateauJeu implements Serializable {
  }
 
     
+=======
+>>>>>>> Stashed changes
 }

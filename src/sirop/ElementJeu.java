@@ -15,6 +15,7 @@ import java.io.ObjectOutputStream;
 public abstract class ElementJeu {
   private Point2D position;
   private PlateauJeu plateau;
+  
   /** Créer un ElementJeu**/
   public ElementJeu (Point2D pos, PlateauJeu plateau) {
     this.position = pos;

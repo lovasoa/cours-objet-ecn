@@ -22,7 +22,8 @@ public class Robot extends ElementJeu implements Movable, Serializable{
   private int cout_deplacement = 1;
   private static int nbre_instances = 0;
   private PlateauJeu plateau;
- 
+  private Icon iconRobot;
+  private GUIBoard board;
 
   /** Créer un robot */
   public Robot(String name, PlateauJeu plateau, Point2D position) {
@@ -31,6 +32,9 @@ public class Robot extends ElementJeu implements Movable, Serializable{
     Robot.nbre_instances ++;
     this.setName(name);
     this.plateau=plateau;
+    iconRobot.createImageIcon("/resources/robot.png", "C'est l'image de robot.");
+    iconRobot.setIconName("IconRobot");
+    board.displayGameElement(position, iconRobot,iconRobot.getIconName() , "Creer un "+this.getType());
   }
 
   /** Créer un robot */

@@ -23,6 +23,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JToggleButton;
 import javax.swing.JMenuBar;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
  
  // Ajoutez les import necessaires
@@ -46,6 +47,7 @@ public class GUIBoard extends JFrame {
     // Panel pour contenir les boutons
     private JPanel          jPanelBoutons;
     private JToggleButton   jPlateau[][];
+    private Icon iconWall;
    
     // Panel pour contenir le texte + bouton reset
     private JPanel          jPanelTexte;
@@ -58,7 +60,7 @@ public class GUIBoard extends JFrame {
     private JButton         jStopButton;
     private JPanel          jPanelPlayStop;
     
-    
+   
     // Constructeur
     public GUIBoard(int l, int h) {
         this.largeur = l;
@@ -121,6 +123,9 @@ public class GUIBoard extends JFrame {
         jPanelBoutons = new JPanel(new GridLayout(this.largeur,this.hauteur));
         // Creating the board
         jPlateau = new JToggleButton[this.largeur][this.hauteur];
+      
+        
+        
         // On cree l'ensemble des boutons (JToggleButton)
         for(int i =0;i<largeur;i++) {
             for(int j=0;j<hauteur;j++) {
@@ -130,6 +135,7 @@ public class GUIBoard extends JFrame {
                   jPlateau[i][j].setMaximumSize(new java.awt.Dimension(100, 100));
                   jPlateau[i][j].setMinimumSize(new java.awt.Dimension(10, 10));
                   jPlateau[i][j].setPreferredSize(new java.awt.Dimension(40, 40));
+                  jPlateau[i][j].setIcon(iconWall.createImageIcon("/resources/wall-128.png", "IconWall"));
                 
                   // Ajout du bouton nouvellement cree
                   jPanelBoutons.add(jPlateau[i][j],i,j);
@@ -216,10 +222,62 @@ public class GUIBoard extends JFrame {
         c.weighty = 0.2;
         jPanelTexte.add(jResetTextButton,c);
         
+        
         // Ajout the panel for the texte
         maFrame.getContentPane().add(jPanelTexte, BorderLayout.EAST);
         
         pack();
+<<<<<<< Updated upstream
         
     }        
 }
+=======
+
+    }        
+    
+        //Afficher les elements
+        public void displayGameElement(Point2D pos, Icon iconElement, String textIcon, String textZoneTexte) {
+          // Appication de l'icone 
+            jPlateau[pos.getX()][pos.getY()].setIcon(iconElement.getIcon());
+            jPlateau[pos.getX()][pos.getY()].setDisabledIcon(iconElement.getIcon());
+            jPlateau[pos.getX()][pos.getY()].setText(textIcon);
+            jPlateau[pos.getX()][pos.getY()].setVerticalTextPosition(SwingConstants.CENTER);
+            jPlateau[pos.getX()][pos.getY()].setHorizontalTextPosition(SwingConstants.CENTER);
+          // Affichage dans le text area
+            jZoneTexte.append(textZoneTexte+"\n");
+        }
+
+        
+}
+
+
+/*
+// dans une methode de gestion d'evenements
+// l'instruction suivante est complexe, plus d'informations sur Internet sur le site d'Oracle
+JFileChooser chooser = new JFileChooser(this.getClass().getClassLoader().getResource("").getPath());
+// filtre permettant de limiter les fichiers montres par le file chooser
+FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT Files", "txt");
+chooser.setFileFilter(filter);
+int returnVal = chooser.showOpenDialog(null);
+// si l'utilisateur a clique sur OK
+if (returnVal == JFileChooser.APPROVE_OPTION) {
+  // attention aux exceptions
+  try {
+    String fileN = chooser.getSelectedFile().getName();
+    System.out.println("You chose to open this file: "+fileN);
+    // chargement du fichier ?
+  } catch (FileNotFoundException ex) {
+    Logger.getLogger(ReactionMenuFile.class.getName()).log(Level.SEVERE, null, ex);
+  } catch (IOException ex) {
+    Logger.getLogger(ReactionMenuFile.class.getName()).log(Level.SEVERE, null, ex);
+  } catch (InterruptedException ex) {
+    Logger.getLogger(ReactionMenuFile.class.getName()).log(Level.SEVERE, null, ex);                    
+  }  
+}
+
+  private void initGUIComponents() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+*/
+>>>>>>> Stashed changes
