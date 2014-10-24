@@ -32,9 +32,9 @@ public class Robot extends ElementJeu implements Movable, Serializable{
     Robot.nbre_instances ++;
     this.setName(name);
     this.plateau=plateau;
-    iconRobot.createImageIcon("/resources/robot.png", "C'est l'image de robot.");
-    iconRobot.setIconName("IconRobot");
-    board.displayGameElement(position, iconRobot,iconRobot.getIconName() , "Creer un "+this.getType());
+    iconRobot = new Icon("/resources/robot.png", "iconRobot");
+    plateau.getBoard().displayGameElement(position, iconRobot, iconRobot.getIconName() , "Creer un "+this.getType());
+    
   }
 
   /** Créer un robot */

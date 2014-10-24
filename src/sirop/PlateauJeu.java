@@ -70,6 +70,8 @@ public class PlateauJeu implements Serializable {
     return true;
   }
   
+  public GUIBoard getBoard(){return monInterface;}
+  
   /** Retourne true si les case autour sont libres**/
   public List<Point2D> casesLibresAutourDe (Point2D reference){
     List<Point2D> cases = new ArrayList<>();
@@ -84,7 +86,7 @@ public class PlateauJeu implements Serializable {
     }
     return cases;
   }
-<<<<<<< Updated upstream
+
   
  public void writeObject(ObjectOutputStream out) throws IOException {
   out.writeUTF("Largeur");
@@ -109,6 +111,4 @@ public class PlateauJeu implements Serializable {
  }
 
     
-=======
->>>>>>> Stashed changes
 }
