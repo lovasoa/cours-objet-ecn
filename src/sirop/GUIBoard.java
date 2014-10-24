@@ -82,6 +82,8 @@ public class GUIBoard extends JFrame {
       // apres avoir choisi les tailles de la fenetre et son titre
       maFrame.getContentPane().setLayout(new BorderLayout());
       
+      iconWall=new Icon("/resources/wall-128.png", "IconWall");
+      
         // Adding the menu
         jMenuBar = new javax.swing.JMenuBar();
         jMenuBar.setMinimumSize(new java.awt.Dimension(320, 22));
@@ -135,7 +137,7 @@ public class GUIBoard extends JFrame {
                   jPlateau[i][j].setMaximumSize(new java.awt.Dimension(100, 100));
                   jPlateau[i][j].setMinimumSize(new java.awt.Dimension(10, 10));
                   jPlateau[i][j].setPreferredSize(new java.awt.Dimension(40, 40));
-                  jPlateau[i][j].setIcon(iconWall.createImageIcon("/resources/wall-128.png", "IconWall"));
+                  jPlateau[i][j].setIcon((javax.swing.Icon) iconWall);
                 
                   // Ajout du bouton nouvellement cree
                   jPanelBoutons.add(jPlateau[i][j],i,j);
