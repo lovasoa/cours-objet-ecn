@@ -83,7 +83,6 @@ public class PlateauJeu implements Serializable {
     }
     return cases;
   }
-<<<<<<< Updated upstream
   
  public void writeObject(ObjectOutputStream out) throws IOException {
    out.writeUTF("Largeur");
@@ -93,7 +92,6 @@ public class PlateauJeu implements Serializable {
    this.listeElementsJeu.writeObject(out);
  }
 
-=======
   /**
    * Cree l'interface avec les dimensions du plateau
    * @param l : largeur de la GUI (boutons)
@@ -104,5 +102,4 @@ public class PlateauJeu implements Serializable {
     this.monInterface.setVisible(true);
   }
     
->>>>>>> Stashed changes
 }
