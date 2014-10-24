@@ -16,19 +16,12 @@ import java.io.ObjectOutputStream;
 
 public abstract class Obstacle extends ElementJeu {        
   private Icon iconObstacle;
-  private GUIBoard board;
   
   /**Create a obstacle*/
-  public Obstacle(Point2D PositionObs, PlateauJeu plateau){
-      super(PositionObs, plateau);
-      iconObstacle.createImageIcon("/resources/obstacle.png", "C'est l'image de obstacle.");
-      iconObstacle.setIconName("IconObstacle");
-      board.displayGameElement(PositionObs, iconObstacle,iconObstacle.getIconName() , "Creer un "+this.getType());
-  }
-  
-    /**Create a obstacle*/
   public Obstacle(PlateauJeu plateau){
       super(plateau);
+      iconObstacle = new Icon("/resources/obstacle.png", "IconeObstacle");
+      plateau.getBoard().displayGameElement(this.getPosition(), iconObstacle,iconObstacle.getIconName() , "Creer un "+this.getType());
   }
 
   /**@print the position*/
