@@ -19,6 +19,7 @@ public class PlateauJeu implements Serializable {
   private int hauteur = 100;
 
   private ListeElementsJeu listeElementsJeu;
+  private GUIBoard monInterface; 
   
 /** Créer un PlateauJeu **/
   public PlateauJeu(int largeur, int hauteur) {
@@ -82,6 +83,7 @@ public class PlateauJeu implements Serializable {
     }
     return cases;
   }
+<<<<<<< Updated upstream
   
  public void writeObject(ObjectOutputStream out) throws IOException {
    out.writeUTF("Largeur");
@@ -91,4 +93,16 @@ public class PlateauJeu implements Serializable {
    this.listeElementsJeu.writeObject(out);
  }
 
+=======
+  /**
+   * Cree l'interface avec les dimensions du plateau
+   * @param l : largeur de la GUI (boutons)
+   * @param h : hauteur de la GUI (boutons)
+   */
+  public void creerGUI(int l, int h) {
+    this.monInterface = new GUIBoard(l, h);
+    this.monInterface.setVisible(true);
+  }
+    
+>>>>>>> Stashed changes
 }
